@@ -1,0 +1,11 @@
+Details for Watson IoT Sensor Simulator
+Organization ID
+zsilpn
+Device Type
+raspberrypi
+Device ID
+123456
+Authentication Method
+use-token-auth
+Authentication Token
+12345678

@@ -1,0 +1,737 @@
+[
+    {
+        "id": "3ca8c7f0.5a6758",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "2f6aaacd.ee7d06",
+        "type": "tab",
+        "label": "Flow 2",
+        "disabled": true,
+        "info": ""
+    },
+    {
+        "id": "c1a3bf74.86fec",
+        "type": "ibmiot",
+        "z": "",
+        "name": "",
+        "keepalive": "60",
+        "serverName": "",
+        "cleansession": true,
+        "appId": "",
+        "shared": false
+    },
+    {
+        "id": "46e94a25.222534",
+        "type": "ui_group",
+        "z": "",
+        "name": "Environmental Conditions",
+        "tab": "bcd16bda.dcbad8",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": true
+    },
+    {
+        "id": "bcd16bda.dcbad8",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Current readings from the sensor:",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "fb176b89.ac4bc8",
+        "type": "ui_base",
+        "theme": {
+            "name": "theme-dark",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#690c02",
+                "baseFont": "Copperplate,Copperplate Gothic Light,fantasy",
+                "edited": true,
+                "reset": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "reset": false
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#097479",
+                    "value": "#690c02",
+                    "edited": true
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#690c02",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#b41503",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#555555",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#eeeeee",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#690c02",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#333333",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "Copperplate,Copperplate Gothic Light,fantasy"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Green House Monitoring",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "4c79c966.4b4048",
+        "type": "ui_spacer",
+        "name": "spacer",
+        "group": "",
+        "order": 1,
+        "width": 7,
+        "height": 1
+    },
+    {
+        "id": "7c486f36.99abd",
+        "type": "function",
+        "z": "3ca8c7f0.5a6758",
+        "name": "Temperature",
+        "func": "global.set('temperature',msg.payload.d.temperature)\nmsg.payload=msg.payload.d.temperature\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 370,
+        "y": 200,
+        "wires": [
+            [
+                "e0ccc33d.d897b",
+                "7ae63fbe.59d18"
+            ]
+        ]
+    },
+    {
+        "id": "ae6b8842.457948",
+        "type": "function",
+        "z": "3ca8c7f0.5a6758",
+        "name": "Humidity",
+        "func": "global.set('humidity',msg.payload.d.humidity)\nmsg.payload=msg.payload.d.humidity\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 360,
+        "y": 280,
+        "wires": [
+            [
+                "f486b7c8.3cbd08",
+                "7ae63fbe.59d18"
+            ]
+        ]
+    },
+    {
+        "id": "e0ccc33d.d897b",
+        "type": "ui_gauge",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "group": "46e94a25.222534",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperature",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 770,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "f486b7c8.3cbd08",
+        "type": "ui_gauge",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "group": "46e94a25.222534",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humidity",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 760,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "1c9e84e3.13cd1b",
+        "type": "http in",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "url": "/temp",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 440,
+        "wires": [
+            [
+                "b5b21203.8813e"
+            ]
+        ]
+    },
+    {
+        "id": "b5b21203.8813e",
+        "type": "function",
+        "z": "3ca8c7f0.5a6758",
+        "name": "dataTemp",
+        "func": "msg.payload=global.get(\"temperature\")\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 360,
+        "y": 440,
+        "wires": [
+            [
+                "1618512.2b742af",
+                "36e184c.5e5f67c"
+            ]
+        ]
+    },
+    {
+        "id": "6d2531a8.504af",
+        "type": "function",
+        "z": "3ca8c7f0.5a6758",
+        "name": "Moisture",
+        "func": "global.set('moisture',msg.payload.d.objectTemp)\nmsg.payload=msg.payload.d.objectTemp\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 360,
+        "y": 380,
+        "wires": [
+            [
+                "d97183a1.f4c0e",
+                "7ae63fbe.59d18"
+            ]
+        ]
+    },
+    {
+        "id": "d97183a1.f4c0e",
+        "type": "ui_gauge",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "group": "46e94a25.222534",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Moisture",
+        "label": "units",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 760,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "318c4bb8.750a44",
+        "type": "ibmiot in",
+        "z": "3ca8c7f0.5a6758",
+        "authentication": "apiKey",
+        "apiKey": "c1a3bf74.86fec",
+        "inputType": "evt",
+        "logicalInterface": "",
+        "ruleId": "",
+        "deviceId": "123456",
+        "applicationId": "",
+        "deviceType": "raspberrypi",
+        "eventType": "+",
+        "commandType": "",
+        "format": "json",
+        "name": "IBM IoT",
+        "service": "registered",
+        "allDevices": "",
+        "allApplications": "",
+        "allDeviceTypes": "",
+        "allLogicalInterfaces": "",
+        "allEvents": true,
+        "allCommands": "",
+        "allFormats": "",
+        "qos": 0,
+        "x": 170,
+        "y": 280,
+        "wires": [
+            [
+                "7c486f36.99abd",
+                "ae6b8842.457948",
+                "6d2531a8.504af"
+            ]
+        ]
+    },
+    {
+        "id": "7ae63fbe.59d18",
+        "type": "debug",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 770,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "1618512.2b742af",
+        "type": "http response",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 440,
+        "wires": []
+    },
+    {
+        "id": "f8d2ef32.1053a",
+        "type": "function",
+        "z": "3ca8c7f0.5a6758",
+        "name": "dataHum",
+        "func": "msg.payload=global.get(\"humidity\")\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 360,
+        "y": 500,
+        "wires": [
+            [
+                "7d546ffb.5e2cb",
+                "36e184c.5e5f67c"
+            ]
+        ]
+    },
+    {
+        "id": "899912c9.5c26f",
+        "type": "http in",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "url": "/hum",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 500,
+        "wires": [
+            [
+                "f8d2ef32.1053a"
+            ]
+        ]
+    },
+    {
+        "id": "7d546ffb.5e2cb",
+        "type": "http response",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "8f7165c3.4e6c58",
+        "type": "http in",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "url": "/moist",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 560,
+        "wires": [
+            [
+                "adb1c16c.218ff"
+            ]
+        ]
+    },
+    {
+        "id": "9727087d.3b5f08",
+        "type": "http response",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "adb1c16c.218ff",
+        "type": "function",
+        "z": "3ca8c7f0.5a6758",
+        "name": "dataMoist",
+        "func": "msg.payload=global.get(\"moisture\")\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 360,
+        "y": 560,
+        "wires": [
+            [
+                "9727087d.3b5f08",
+                "36e184c.5e5f67c"
+            ]
+        ]
+    },
+    {
+        "id": "32381584.d64e3a",
+        "type": "http in",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "url": "/crop",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 980,
+        "wires": [
+            [
+                "7ca28e2e.0b0a7"
+            ]
+        ]
+    },
+    {
+        "id": "dceceeb6.b3c7e",
+        "type": "http response",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 610,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "7ca28e2e.0b0a7",
+        "type": "function",
+        "z": "3ca8c7f0.5a6758",
+        "name": "CropName",
+        "func": "global.set('CropName',msg.payload.crop)\nmsg.payload=msg.payload.crop\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 390,
+        "y": 980,
+        "wires": [
+            [
+                "dceceeb6.b3c7e",
+                "edcfc3bb.d5c5a"
+            ]
+        ]
+    },
+    {
+        "id": "edcfc3bb.d5c5a",
+        "type": "debug",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 870,
+        "y": 880,
+        "wires": []
+    },
+    {
+        "id": "63137c0f.bd1254",
+        "type": "function",
+        "z": "3ca8c7f0.5a6758",
+        "name": "templevel",
+        "func": "if(global.get(\"temperature\")>\"40\")\n{\n    msg.payload=\"Temperature has exceeded optimal threshold(40)\"\n}\nelse\n{\n    msg.payload=\"Temperature is optimal(<=40)\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 360,
+        "y": 700,
+        "wires": [
+            [
+                "ed4bc4ec.e969b8"
+            ]
+        ]
+    },
+    {
+        "id": "f833af8c.3bb96",
+        "type": "http in",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "url": "/templevel",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 700,
+        "wires": [
+            [
+                "63137c0f.bd1254"
+            ]
+        ]
+    },
+    {
+        "id": "ed4bc4ec.e969b8",
+        "type": "http response",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "b7eec322.06e9c",
+        "type": "function",
+        "z": "3ca8c7f0.5a6758",
+        "name": "humlevel",
+        "func": "if(global.get(\"humidity\")>\"90\")\n{\n    msg.payload=\"Humidity has exceeded optimal threshold(90)\"\n}\nelse\n{\n    msg.payload=\"Humidity is optimal(<=90)\"\n}\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 360,
+        "y": 780,
+        "wires": [
+            [
+                "df0e951f.89fd58"
+            ]
+        ]
+    },
+    {
+        "id": "d9b0e1f8.e1bd4",
+        "type": "http in",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "url": "/humlevel",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 180,
+        "y": 780,
+        "wires": [
+            [
+                "b7eec322.06e9c"
+            ]
+        ]
+    },
+    {
+        "id": "df0e951f.89fd58",
+        "type": "http response",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 570,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "26639d38.53ce42",
+        "type": "http in",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "url": "/motorstatus",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 190,
+        "y": 840,
+        "wires": [
+            [
+                "d29f86de.edae68"
+            ]
+        ]
+    },
+    {
+        "id": "9b9c63cf.9057f",
+        "type": "http response",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 580,
+        "y": 840,
+        "wires": []
+    },
+    {
+        "id": "d29f86de.edae68",
+        "type": "function",
+        "z": "3ca8c7f0.5a6758",
+        "name": "MotorStatus",
+        "func": "if(global.get(\"CropName\")==\"rice\")\n{\n    if(global.get(\"moisture\")<\"20\")\n    {\n        msg.payload=\"Motor is ON for rice as SM<20\"\n    }\n    else\n    {\n        msg.payload=\"Motor is OFF for rice as SM>=20\"\n    }\n}\nif(global.get(\"CropName\")==\"corn\")\n{\n    if(global.get(\"moisture\")<\"25\")\n    {\n        msg.payload=\"Motor is ON for corn as SM<25\"\n    }\n    else\n    {\n        msg.payload=\"Motor is OFF for corn as SM>=25\"\n    }\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 380,
+        "y": 840,
+        "wires": [
+            [
+                "9b9c63cf.9057f"
+            ]
+        ]
+    },
+    {
+        "id": "e2d28ac5.aac658",
+        "type": "ibmiot out",
+        "z": "3ca8c7f0.5a6758",
+        "authentication": "apiKey",
+        "apiKey": "c1a3bf74.86fec",
+        "outputType": "cmd",
+        "deviceId": "123456",
+        "deviceType": "raspberrypi",
+        "eventCommandType": "Home",
+        "format": "json",
+        "data": "data",
+        "qos": 0,
+        "name": "IBM IoT",
+        "service": "registered",
+        "x": 1080,
+        "y": 560,
+        "wires": []
+    },
+    {
+        "id": "edc081b9.140df",
+        "type": "debug",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "active": false,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 1090,
+        "y": 520,
+        "wires": []
+    },
+    {
+        "id": "36e184c.5e5f67c",
+        "type": "function",
+        "z": "3ca8c7f0.5a6758",
+        "name": "",
+        "func": "msg.payload={\"T\":global.get(\"temperature\"),\"H\":global.get(\"humidity\"),\"M\":global.get(\"moisture\")}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 820,
+        "y": 540,
+        "wires": [
+            [
+                "edc081b9.140df",
+                "e2d28ac5.aac658"
+            ]
+        ]
+    }
+]

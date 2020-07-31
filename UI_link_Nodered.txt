@@ -1,0 +1,1 @@
+https://node-red-bkwyn.eu-gb.mybluemix.net/ui
